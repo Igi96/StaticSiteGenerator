@@ -173,9 +173,7 @@ def markdown_to_blocks(markdown):
     """
     # Step 1: Split the Markdown into blocks based on two or more newlines
     blocks = re.split(r'\n\s*\n', markdown.strip())
-    print("After splitting into blocks:")
-    for i, block in enumerate(blocks):
-        print(f"Block {i+1}: {block}")
+
 
     # Step 2: Normalize each block by removing excessive spaces, but preserving newlines inside lists
     def normalize_block(block):
@@ -185,46 +183,14 @@ def markdown_to_blocks(markdown):
     
     # Step 3: Normalize each block and ensure separation
     blocks = [normalize_block(block) for block in blocks]
-    print("\nAfter normalizing blocks:")
-    for i, block in enumerate(blocks):
-        print(f"Normalized Block {i+1}: {block}")
+
 
     # Step 4: Filter out empty blocks (in case of excessive newlines)
     blocks = [block for block in blocks if block]
-    print("\nAfter filtering empty blocks:")
-    for i, block in enumerate(blocks):
-        print(f"Final Block {i+1}: {block}")
+
     
     return blocks
 
-
-
-
-#def markdown_to_blocks(markdown):
-#    """
-#    Converts a Markdown string into a list of blocks.
-#    
-#    Each block can be a heading, a paragraph, or a list block.
-#    Leading/trailing whitespace is removed, and empty blocks are filtered out.
-#    """
-#    # Step 1: Split the Markdown into blocks based on two or more newlines
-#    blocks = re.split(r'\n\s*\n', markdown.strip())
-#    
-#    # Step 2: Normalize each block by removing excessive spaces, but preserving newlines inside lists
-#    def normalize_block(block):
-#        lines = block.splitlines()
-#        normalized_lines = [re.sub(r'[ \t]+', ' ', line.strip()) for line in lines if line.strip()]
-#        return "\n".join(normalized_lines)
-#    
-#    # Step 3: Normalize each block and ensure separation
-#    blocks = [normalize_block(block) for block in blocks]
-#    
-#    # Step 4: Filter out empty blocks (in case of excessive newlines)
-#    blocks = [block for block in blocks if block]
-#    
-#    return blocks
-#
-#
 
 
 def block_to_block_type(block):
